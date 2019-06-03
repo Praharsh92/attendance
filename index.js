@@ -48,13 +48,13 @@ await attendanceTab.click();
 
 if (args[2] == 'login') {
   const markSignInBtn = await page.waitForSelector('button.signIn');
-  await markSignInBtn.click(),
+  await markSignInBtn.click();
   // await Promise.all([
   //   page.waitForNavigation({ waitUntil: 'networkidle0' })
   // ]);
 } else if (args[2] == 'logout') {
   const markSignOutBtn = await page.waitForSelector('button.signOut');
-  await markSignOutBtn.click(),
+  await markSignOutBtn.click();
   // await Promise.all([
   //   page.waitForNavigation({ waitUntil: 'networkidle0' })
   // ]);
