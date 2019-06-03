@@ -47,17 +47,17 @@ const attendanceTab = await page.$('a[href="#home-dashboard-3"]');
 await attendanceTab.click();
 
 if (args[2] == 'login') {
-  const markSignInBtn = await page.$('button.signIn');
-  await Promise.all([
-    await markSignInBtn.click(),
-    page.waitForNavigation({ waitUntil: 'networkidle0' })
-  ]);
+  const markSignInBtn = await page.waitForSelector('button.signIn');
+  await markSignInBtn.click(),
+  // await Promise.all([
+  //   page.waitForNavigation({ waitUntil: 'networkidle0' })
+  // ]);
 } else if (args[2] == 'logout') {
-  const markSignOutBtn = await page.$('button.signOut');
-  await Promise.all([
-    await markSignOutBtn.click(),
-    page.waitForNavigation({ waitUntil: 'networkidle0' })
-  ]);
+  const markSignOutBtn = await page.waitForSelector('button.signOut');
+  await markSignOutBtn.click(),
+  // await Promise.all([
+  //   page.waitForNavigation({ waitUntil: 'networkidle0' })
+  // ]);
 }
 
 // await page.waitFor(5000);
