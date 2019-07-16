@@ -32,7 +32,7 @@ await page.setViewport({width: 1920, height: 1080});
 // await page.evaluate('document.documentElement.webkitRequestFullscreen()');
 
 await page.goto(url);
-await page.waitForNavigation({waitUntil: 'load'});
+await page.waitForNavigation({waitUntil: 'domcontentloaded'});
 
 const userName = await page.$('#username');
 await userName.type(userNameValue);
