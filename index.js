@@ -69,7 +69,7 @@ await Promise.all([
   await page.evaluate(() => {
     document.querySelector('a.empSignOut').click();
   }),
-  page.waitForNavigation({ waitUntil: 'networkidle0' })
+  page.waitForNavigation({ waitUntil: 'domcontentloaded' })
 ]);
 
 // await page.waitFor(5000);
