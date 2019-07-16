@@ -32,12 +32,13 @@ await page.setViewport({width: 1920, height: 1080});
 // await page.evaluate('document.documentElement.webkitRequestFullscreen()');
 
 await page.goto(url);
+await page.waitForNavigation({waitUntil: 'load'});
 
-const userName = await page.$('#j_username');
+const userName = await page.$('#username');
 await userName.type(userNameValue);
-const password = await page.$('#j_password');
+const password = await page.$('#password');
 await password.type(passwordValue);
-const signInBtn = await page.$('#login-button');
+const signInBtn = await page.$('.btn-primary.mt-1');
 await Promise.all([
   await signInBtn.click(),
   page.waitForNavigation({ waitUntil: 'networkidle0' })
@@ -60,10 +61,13 @@ if (args[2] == 'login') {
   // ]);
 }
 
-// await page.waitFor(5000);
+if (args[2] == 'test') {
+  await page.waitFor(2000);
+}
+
 await Promise.all([
   await page.evaluate(() => {
-    document.querySelector('a[href="/j_spring_security_logout"]').click();
+    document.querySelector('a.empSignOut').click();
   }),
   page.waitForNavigation({ waitUntil: 'networkidle0' })
 ]);
